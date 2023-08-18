@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning
+    alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" 
+    data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+<div class="shadow p-5 mb-5 bg-body rounded">
+<h1>Dashboard</h1>
+<br><br/>
+<h4>You have Logged In Now!</h4>
+<br><br/>
+<!-- <a href="{{ url_for('logout')}}">Logout</a> -->
+<form method="POST", action="{{ url_for('logout')}}">
+    {{ form.hidden_tag() }}
+    {{ form.submit(class="btn btn-danger") }}
+</form>
+</div>
+{% endblock %}
